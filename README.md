@@ -2,9 +2,10 @@
 
 This proyect was made by:
 
-Jeronimo Restrepo
-Mateo Sanz
-Gabriel Atehortua
+Jeronimo Restrepo,
+Mateo Sanz,
+Gabriel Atehortua,
+Felipe Giraldo
 
 For the class of P1
 
@@ -16,3 +17,4 @@ and is a web app AI assistant, that allows people to simulate interviews and sha
 unlike main competitor or alternative our app their users to approach applications for different jobs.
 
 <img width="100" height="100" alt="Simaii logo" src="https://github.com/user-attachments/assets/84d11eab-2742-428d-ab6f-0ba9f0b9936b"/>
+
