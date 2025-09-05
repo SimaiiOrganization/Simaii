@@ -1,4 +1,4 @@
 Django
-Pillow
-Pandas
-matPlotlib
+Python
+HTML
+SQL
