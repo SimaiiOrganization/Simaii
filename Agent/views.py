@@ -76,34 +76,34 @@ def registro(request):
 def chat(request):
     return render(request, 'chat.html')
 
-
+from django.http import JsonResponse, HttpResponseBadRequest
 from django.views.decorators.csrf import csrf_exempt
+import json
 from django.conf import settings
-from openai import OpenAI
+import google.genai as genai  # o la forma correcta de importar según la librería
 
-client = OpenAI(api_key=settings.OPENAI_API_KEY)
+# configurar cliente
+client = genai.Client(api_key=settings.GEMINI_API_KEY)
 
 @csrf_exempt
 def chat_api(request):
     if request.method != "POST":
-        return JsonResponse({"error": "Método no permitido"}, status=405)
+        return HttpResponseBadRequest("Método no permitido")
 
     try:
-        data = json.loads(request.body)
+        data = json.loads(request.body.decode("utf-8"))
         user_message = data.get("message", "").strip()
-    except Exception:
-        return HttpResponseBadRequest("JSON inválido")
+        if not user_message:
+            return JsonResponse({"error": "mensaje vacío"}, status=400)
 
-    if not user_message:
-        return JsonResponse({"error": "Falta el mensaje"}, status=400)
-
-    try:
-        response = client.responses.create(
-            model="gpt-4o-mini",
-            input=f"Usuario: {user_message}\nAsistente:",
-            max_tokens=300
+        # Llamada a Gemini
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=user_message
         )
-        reply = response.output_text
+        # `response.text` es el contenido generado
+        reply = response.text
+
         return JsonResponse({"reply": reply})
     except Exception as e:
-        return JsonResponse({"error": str(e)}, status=500)
+        return JsonResponse({"error": str(e)}, status=500)  

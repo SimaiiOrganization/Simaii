@@ -16,12 +16,14 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# OpenAI API Key
+
 # Cargar variables del archivo .env
 
-load_dotenv()
-BASE_DIR = Path(__file__).resolve().parent.parent
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+# Ruta explícita al .env
+load_dotenv(os.path.join(BASE_DIR, ".env"), override=True)
+
+# Gemini API Key
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
