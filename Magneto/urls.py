@@ -25,4 +25,5 @@ urlpatterns = [
     path('chat/', AgentViews.chat, name="Chat"),
     path('registro/', AgentViews.registro, name="registro"),
     path('login/', AgentViews.login, name="login"),
+    path("api/chat/", AgentViews.chat_api, name="chat_api"),
 ]

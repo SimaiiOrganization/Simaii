@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
+import json
 
 
 def login(request):
@@ -76,3 +77,33 @@ def chat(request):
     return render(request, 'chat.html')
 
 
+from django.views.decorators.csrf import csrf_exempt
+from django.conf import settings
+from openai import OpenAI
+
+client = OpenAI(api_key=settings.OPENAI_API_KEY)
+
+@csrf_exempt
+def chat_api(request):
+    if request.method != "POST":
+        return JsonResponse({"error": "Método no permitido"}, status=405)
+
+    try:
+        data = json.loads(request.body)
+        user_message = data.get("message", "").strip()
+    except Exception:
+        return HttpResponseBadRequest("JSON inválido")
+
+    if not user_message:
+        return JsonResponse({"error": "Falta el mensaje"}, status=400)
+
+    try:
+        response = client.responses.create(
+            model="gpt-4o-mini",
+            input=f"Usuario: {user_message}\nAsistente:",
+            max_tokens=300
+        )
+        reply = response.output_text
+        return JsonResponse({"reply": reply})
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
