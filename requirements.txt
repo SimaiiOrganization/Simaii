@@ -1,0 +1,7 @@
+Django
+python-dotenv
+google-genai
+
+py -m pip install Django
+py -m pip install python-dotenv
+py -m pip install google-genai
