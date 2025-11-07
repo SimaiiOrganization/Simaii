@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from Agent import views as AgentViews
 from django.contrib.auth.views import LogoutView
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,4 +32,4 @@ urlpatterns = [
     path('estadisticas/', AgentViews.estadisticas, name="estadisticas"),
     path('logout/', LogoutView.as_view(next_page='login'), name="logout"),
     path('personalidad/', AgentViews.personalidad, name="personalidad"),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

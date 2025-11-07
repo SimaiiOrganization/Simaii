@@ -16,6 +16,9 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'Agent/static',]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Cargar variables del archivo .env
 
@@ -32,9 +35,8 @@ GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 SECRET_KEY = 'django-insecure-4ek_mv!h&&gsbk@=v^2l6pnv)+!8zrr5^t6u&-v5_y=fcw*5!@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
