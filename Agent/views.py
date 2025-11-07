@@ -39,7 +39,8 @@ def home(request):
 
 # Página de registro
 
-
+def estadisticas(request):
+    return render(request, 'estadisticas.html')
 
 def registro(request):
     if request.method == "POST":

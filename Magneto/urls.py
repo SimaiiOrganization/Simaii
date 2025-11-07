@@ -26,4 +26,5 @@ urlpatterns = [
     path('registro/', AgentViews.registro, name="registro"),
     path('login/', AgentViews.login, name="login"),
     path("api/chat/", AgentViews.chat_api, name="chat_api"),
+    path('estadisticas/', AgentViews.estadisticas, name="estadisticas"),
 ]
