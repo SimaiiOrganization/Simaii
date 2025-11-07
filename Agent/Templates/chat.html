@@ -16,6 +16,7 @@
       min-height: 100vh;
       color: #fff;
     }
+    /* ... el resto de tus estilos originales de chat ... */
     .chat-root {
       display: flex;
       flex-direction: column;
@@ -193,88 +194,132 @@
     }
   </style>
 </head>
-<body>
-  <div class="chat-root">
-    <div class="chat-header">
-      <div>
-        <div style="font-size:2rem; font-weight:700;">Entrevistador IA - Google</div>
-        <div style="color:#d1d5db; font-size:1rem; margin-top:4px;">Simulando para el puesto de Product Manager</div>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full">
+  <!-- Sidebar Inicio -->
+  <aside class="flex-shrink-0 w-64 bg-background-light dark:bg-background-dark border-r border-gray-200 dark:border-gray-800">
+    <div class="flex h-full flex-col justify-between p-4">
+      <div class="flex flex-col gap-4">
+        <div class="flex gap-3 items-center">
+          <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar"
+            style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDX8GqwfTCWDVBK023cK6kygiekfn40XjrsM5Y09e0ZXyUaRdL84RellnAKX33Q3uNFMz4uIXKi1YvZ3d49FwGO4xSzf2yE8QlLCWuQuV88KXQiuQOpp1mMfCRmuPSzQD_SP05eFeXTszVMi91oiNpcKGhV1ySFTwfoTyeJtIf0ImS1sjGH-fy7eYJ7A--6Xi2sqDRGoRHQS89bunVrhjeImLPnjjX4ml0mCe5ApydBS3oBKrMXLSA4whECivQ7_4BrbwXlpOuNpmwT");'>
+          </div>
+          <div class="flex flex-col">
+            <h1 class="text-gray-900 dark:text-white text-base font-medium leading-normal">{{ user.get_full_name }}</h1>
+            <p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">{{ user.email }}</p>
+          </div>
+        </div>
+        <nav class="flex flex-col gap-2 mt-4">
+          <a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary-light dark:bg-primary/20" href="/chat">
+            <span class="material-symbols-outlined text-primary-dark dark:text-primary">dashboard</span>
+            <p class="text-primary-dark dark:text-primary text-sm font-medium leading-normal">Chat de Entrevista</p>
+          </a>
+          <a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" href="/estadisticas">
+            <span class="material-symbols-outlined text-gray-700 dark:text-gray-300">bar_chart</span>
+            <p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Reporte de Rendimiento</p>
+          </a>
+        </nav>
+      </div>
+      <div class="flex flex-col gap-1">
+        <a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" href="#">
+          <span class="material-symbols-outlined text-gray-700 dark:text-gray-300">help</span>
+          <p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Ayuda</p>
+        </a>
+ <a href="/login" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-900 dark:text-white text-sm font-medium leading-normal">
+  <span class="material-symbols-outlined text-gray-700 dark:text-gray-300">logout</span>
+  <p>Cerrar Sesión</p>
+</a>
+
       </div>
     </div>
-    <div class="chat-messages-outer">
-      <div class="chat-messages-panel">
-        <div class="chat-messages" id="messages">
-          <div class="bubble-row">
-            <div class="avatar-bot" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1sUzYDrSSME1L_PX9L8FaCeP4Dp-5ldLxuh7fBUrL_UPJm3s92rIaDLTpNqED0AQl18D1Drf-0bEAvYi1EEs5zKrLhgyXvZQfc4rQkZRav5otV7X8aFCMZQ93rpbT0la5l_xp6jSjzL_z1AkuVDoe6hIn8HEopxrpLXCY1_NhmLTk6y2UgWqvvzlwmnR10tQBF8-QklH3EC8H9wprxifr5qmpTiLtg_X7d5b7ZcMDtZ853WoIgpaKZnrUtVUa6ngQf0y43pSeHW2D');"></div>
-            <div class="chat-bubble-bot">
-              Hola, soy tu entrevistador de IA. Hoy simularemos tu entrevista para el puesto de Product Manager. Cuando estés listo, empecemos con la primera pregunta. ¿Puedes hablarme un poco sobre ti?
+  </aside>
+  <!-- Sidebar Fin -->
+
+  <!-- Contenido Principal Chat -->
+  <main class="flex-1 overflow-y-auto">
+    <div class="chat-root" style="background: transparent;">
+      <div class="chat-header">
+        <div>
+          <div style="font-size:2rem; font-weight:700;">Entrevistador IA - Google</div>
+          <div style="color:#d1d5db; font-size:1rem; margin-top:4px;">Simulando para el puesto de Product Manager</div>
+        </div>
+      </div>
+      <div class="chat-messages-outer">
+        <div class="chat-messages-panel">
+          <div class="chat-messages" id="messages">
+            <div class="bubble-row">
+              <div class="avatar-bot" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1sUzYDrSSME1L_PX9L8FaCeP4Dp-5ldLxuh7fBUrL_UPJm3s92rIaDLTpNqED0AQl18D1Drf-0bEAvYi1EEs5zKrLhgyXvZQfc4rQkZRav5otV7X8aFCMZQ93rpbT0la5l_xp6jSjzL_z1AkuVDoe6hIn8HEopxrpLXCY1_NhmLTk6y2UgWqvvzlwmnR10tQBF8-QklH3EC8H9wprxifr5qmpTiLtg_X7d5b7ZcMDtZ853WoIgpaKZnrUtVUa6ngQf0y43pSeHW2D');"></div>
+              <div class="chat-bubble-bot">
+                Hola, soy tu entrevistador de IA. Hoy simularemos tu entrevista para el puesto de Product Manager. Cuando estés listo, empecemos con la primera pregunta. ¿Puedes hablarme un poco sobre ti?
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="chat-input-bar-outer">
-      <div class="input-rounded-container">
-        <form class="chat-input-area" onsubmit="event.preventDefault(); sendMessage();">
-          <input type="text" id="userInput" class="chat-input-text" placeholder="Escribe tu respuesta..." autocomplete="off" />
-          <button type="submit" class="chat-send-btn">
-            <span class="material-symbols-outlined" style="font-size:2rem;">send</span>
-          </button>
-        </form>
+      <div class="chat-input-bar-outer">
+        <div class="input-rounded-container">
+          <form class="chat-input-area" onsubmit="event.preventDefault(); sendMessage();">
+            <input type="text" id="userInput" class="chat-input-text" placeholder="Escribe tu respuesta..." autocomplete="off" />
+            <button type="submit" class="chat-send-btn">
+              <span class="material-symbols-outlined" style="font-size:2rem;">send</span>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  <script>
-    async function sendMessage() {
-      const input = document.getElementById("userInput");
-      const text = input.value.trim();
-      if (text === "") return;
+  </main>
+</div>
+<script>
+  async function sendMessage() {
+    const input = document.getElementById("userInput");
+    const text = input.value.trim();
+    if (text === "") return;
 
-      const messages = document.getElementById("messages");
+    const messages = document.getElementById("messages");
 
-      // Usuario
-      const userBubble = document.createElement("div");
-      userBubble.className = "bubble-row user";
-      userBubble.innerHTML = `
-        <div class="avatar-user" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuBIy1zFF_gDMfCwTXs9F6F3x0oQQldkol-5lBhzC_KL6PVRxrnhVNmf_cNVyonpCgUcfDTbjJz0iZbFTNfEpyEYk72XpzaBlU6WraEilp6kGi0cCrbYSw5RJnBbnGo1hBX0GhlNVj7IcCn1iSYjU-T5Uq11q9Npegju4cSYy6BDz3Wa8As69-unwPV_8bn7tzBx2vOtX2aEGnf60cMyUWQ9R4mAiSJN4XbgvDW89dZe2l_PhRDl8KWYX0Kx_1BiP4IcJTTaEd8wq43u');"></div>
-        <div class="chat-bubble-user">${text}</div>
-      `;
-      messages.appendChild(userBubble);
-      messages.scrollTop = messages.scrollHeight;
-      input.value = "";
+    // Usuario
+    const userBubble = document.createElement("div");
+    userBubble.className = "bubble-row user";
+    userBubble.innerHTML = `
+      <div class="avatar-user" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuBIy1zFF_gDMfCwTXs9F6F3x0oQQldkol-5lBhzC_KL6PVRxrnhVNmf_cNVyonpCgUcfDTbjJz0iZbFTNfEpyEYk72XpzaBlU6WraEilp6kGi0cCrbYSw5RJnBbnGo1hBX0GhlNVj7IcCn1iSYjU-T5Uq11q9Npegju4cSYy6BDz3Wa8As69-unwPV_8bn7tzBx2vOtX2aEGnf60cMyUWQ9R4mAiSJN4XbgvDW89dZe2l_PhRDl8KWYX0Kx_1BiP4IcJTTaEd8wq43u');"></div>
+      <div class="chat-bubble-user">${text}</div>
+    `;
+    messages.appendChild(userBubble);
+    messages.scrollTop = messages.scrollHeight;
+    input.value = "";
 
-      // Cargando respuesta del bot
-      const botLoadBubble = document.createElement("div");
-      botLoadBubble.className = "bubble-row";
-      botLoadBubble.innerHTML = `
-        <div class="avatar-bot" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1sUzYDrSSME1L_PX9L8FaCeP4Dp-5ldLxuh7fBUrL_UPJm3s92rIaDLTpNqED0AQl18D1Drf-0bEAvYi1EEs5zKrLhgyXvZQfc4rQkZRav5otV7X8aFCMZQ93rpbT0la5l_xp6jSjzL_z1AkuVDoe6hIn8HEopxrpLXCY1_NhmLTk6y2UgWqvvzlwmnR10tQBF8-QklH3EC8H9wprxifr5qmpTiLtg_X7d5b7ZcMDtZ853WoIgpaKZnrUtVUa6ngQf0y43pSeHW2D');"></div>
-        <div class="chat-bubble-bot">
-          <span class="material-symbols-outlined animate-bounce" style="font-size:2rem; color:#bbb;">pending</span>
-        </div>
-      `;
-      messages.appendChild(botLoadBubble);
-      messages.scrollTop = messages.scrollHeight;
+    // Bubble de carga bot
+    const botLoadBubble = document.createElement("div");
+    botLoadBubble.className = "bubble-row";
+    botLoadBubble.innerHTML = `
+      <div class="avatar-bot" style="background-image:url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1sUzYDrSSME1L_PX9L8FaCeP4Dp-5ldLxuh7fBUrL_UPJm3s92rIaDLTpNqED0AQl18D1Drf-0bEAvYi1EEs5zKrLhgyXvZQfc4rQkZRav5otV7X8aFCMZQ93rpbT0la5l_xp6jSjzL_z1AkuVDoe6hIn8HEopxrpLXCY1_NhmLTk6y2UgWqvvzlwmnR10tQBF8-QklH3EC8H9wprxifr5qmpTiLtg_X7d5b7ZcMDtZ853WoIgpaKZnrUtVUa6ngQf0y43pSeHW2D');"></div>
+      <div class="chat-bubble-bot">
+        <span class="material-symbols-outlined animate-bounce" style="font-size:2rem; color:#bbb;">pending</span>
+      </div>
+    `;
+    messages.appendChild(botLoadBubble);
+    messages.scrollTop = messages.scrollHeight;
 
-      try {
-        const response = await fetch("/api/chat/", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: text }),
-        });
-        const data = await response.json();
-        botLoadBubble.querySelector('.chat-bubble-bot').innerHTML = data.reply || data.error || "Error al obtener respuesta";
-      } catch (error) {
-        botLoadBubble.querySelector('.chat-bubble-bot').innerHTML = "Error de conexión con el servidor.";
-      }
-      messages.scrollTop = messages.scrollHeight;
+    try {
+      const response = await fetch("/api/chat/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: text }),
+      });
+      const data = await response.json();
+      botLoadBubble.querySelector('.chat-bubble-bot').innerHTML = data.reply || data.error || "Error al obtener respuesta";
+    } catch (error) {
+      botLoadBubble.querySelector('.chat-bubble-bot').innerHTML = "Error de conexión con el servidor.";
     }
+    messages.scrollTop = messages.scrollHeight;
+  }
 
-    document.getElementById("userInput").addEventListener("keydown", (e) => {
-      if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
-      }
-    });
-  </script>
+  document.getElementById("userInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+</script>
 </body>
 </html>

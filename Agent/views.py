@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as auth_login
+
 from django.contrib.auth.models import User
 import json
 
 
-def login(request):
+def login_view(request):
     error = None
     if request.method == "POST":
         usuario = request.POST.get("usuario")
@@ -17,7 +18,7 @@ def login(request):
 
         if user is not None:
             # Usuario registrado y contraseña correcta → redirige a home
-            login(request, user)
+            auth_login(request, user)
             return redirect("Home")
         else:
             # Usuario no existe o contraseña incorrecta → se queda en login
@@ -27,7 +28,8 @@ def login(request):
     return render(request, "login.html", {"error": error})
 
 
-
+def personalidad(request):
+    return render(request, 'personalidad.html')
 
 # Página "About"
 def about(request):
