@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Agent import views as AgentViews
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +25,9 @@ urlpatterns = [
     path('about/', AgentViews.about, name="About"),
     path('chat/', AgentViews.chat, name="Chat"),
     path('registro/', AgentViews.registro, name="registro"),
-    path('login/', AgentViews.login, name="login"),
+    path('login/', AgentViews.login_view, name="Login"),
     path("api/chat/", AgentViews.chat_api, name="chat_api"),
+    path('estadisticas/', AgentViews.estadisticas, name="estadisticas"),
+    path('logout/', LogoutView.as_view(next_page='login'), name="logout"),
+    path('personalidad/', AgentViews.personalidad, name="personalidad"),
 ]

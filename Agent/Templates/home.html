@@ -1,190 +1,113 @@
 <!DOCTYPE html>
-<html lang="es">
+<html class="dark" lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f6f8;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-
-    /* Encabezado */
-    header {
-      background: #4facfe;
-      color: white;
-      padding: 1rem;
-      font-size: 1.2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      position: relative;
-      z-index: 1000;
-    }
-
-    /* Botón menú (hamburguesa) */
-    .menu-btn {
-      font-size: 1.5rem;
-      cursor: pointer;
-      border: none;
-      background: none;
-      color: white;
-    }
-
-    /* Botón login */
-    .btn-login {
-      background: white;
-      color: #4facfe;
-      padding: 8px 15px;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-weight: bold;
-      transition: background 0.3s ease;
-    }
-
-    .btn-login:hover {
-      background: #e0f3ff;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      height: 100%;
-      width: 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background: #4facfe;
-      overflow-x: hidden;
-      transition: 0.3s;
-      padding-top: 60px;
-      z-index: 999;
-    }
-
-    .sidebar a {
-      padding: 12px 20px;
-      text-decoration: none;
-      font-size: 1.1rem;
-      color: white;
-      display: block;
-      transition: 0.3s;
-    }
-
-    .sidebar a:hover {
-      background: #00c6ff;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      font-size: 1.5rem;
-      color: white;
-      cursor: pointer;
-    }
-
-    /* Contenido principal */
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-      text-align: center;
-    }
-
-    .home-container {
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      padding: 2rem;
-      max-width: 400px;
-      width: 100%;
-    }
-
-    .home-container h2 {
-      margin-bottom: 1rem;
-      color: #333;
-    }
-
-    .home-container p {
-      margin-bottom: 2rem;
-      color: #555;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #4facfe;
-      color: white;
-      padding: 10px 20px;
-      font-size: 1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .btn:hover {
-      background: #00c6ff;
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Simaii - Domina tu Próxima Entrevista</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "primary": "#22c55e", // green-500
+                "primary-hover": "#16a34a", // green-600
+                "primary-light": "#dcfce7", // green-100
+                "background-light": "#f8fafc", // slate-50
+                "background-dark": "#020617", // slate-950
+                "text-light": "#0f172a", // slate-900
+                "text-dark": "#f8fafc", // slate-50
+                "muted-light": "#64748b", // slate-500
+                "muted-dark": "#94a3b8", // slate-400
+            },
+            fontFamily: {
+                "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+        },
+    },
+}
+</script>
+<style>
+.material-symbols-outlined {
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24
+}
+</style>
 </head>
-<body>
-
-  <!-- Sidebar -->
- <div id="sidebar" class="sidebar">
-  <span class="close-btn" onclick="closeSidebar()">&times;</span>
-  <a id="btn-home" onclick="closeSidebar()">🏠 Inicio</a>
-  <a id="btn-chat" onclick="closeSidebar()">💬 Chat</a>
-  <a id="btn-contacto" onclick="closeSidebar()">📞 Contacto</a>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark antialiased">
+<div class="relative flex w-full flex-col">
+<header class="sticky top-0 z-50 flex items-center justify-center bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+    <nav class="flex w-full max-w-7xl items-center justify-between whitespace-nowrap px-6 py-4">
+        <div class="flex items-center gap-3">
+            <div class="size-6 text-primary">
+                <svg fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.93 23.23a1 1 0 0 1-.6-.22l-7.2-6.07a1 1 0 0 1-.22-1.11l2.12-5.5a1 1 0 0 1 .9-.68h10.14a1 1 0 0 1 .9.68l2.12 5.5a1 1 0 0 1-.21 1.11l-7.2 6.07a1 1 0 0 1-.6.22ZM8.6 15.82l3.4 2.87 3.4-2.87-1.42-3.69H10L8.6 15.82ZM17 2.07a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v7.06a1 1 0 0 0 .56.89l.8.4a1 1 0 0 1 .53.9V13a1 1 0 0 0 1 1h4.22a1 1 0 0 0 1-1v-1.68a1 1 0 0 1 .53-.9l.8-.4a1 1 0 0 0 .56-.89V2.07Z"></path>
+                </svg>
+            </div>
+            <h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">Simaii</h2>
+        </div>
+        <div class="flex gap-2">
+            <button id="btn-login" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-gray-200/80 dark:bg-white/10 text-sm font-bold leading-normal tracking-[0.015em] hover:bg-gray-200/100 dark:hover:bg-white/20 transition-colors">
+                <span class="truncate">Iniciar Sesión</span>
+            </button>
+            <button id="btn-registro" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:bg-primary-hover transition-colors">
+                <span class="truncate">Registrarse</span>
+            </button>
+        </div>
+    </nav>
+</header>
+<main class="flex flex-col items-center">
+    <div class="w-full max-w-5xl px-6 py-24 sm:py-32">
+        <section class="text-center">
+            <div class="flex flex-col items-center gap-6">
+                <div class="flex flex-col gap-4">
+                    <h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-text-light dark:text-text-dark">Domina tu Próxima Entrevista con IA</h1>
+                    <p class="mx-auto max-w-2xl text-lg text-muted-light dark:text-muted-dark">Practica respuestas, recibe feedback instantáneo y gana la confianza que necesitas para conseguir el trabajo de tus sueños.</p>
+                </div>
+                <button id="btn-practica-gratis" class="flex w-fit min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] hover:bg-primary-hover transition-colors">
+                    <span class="truncate">Comienza tu Práctica Gratis</span>
+                </button>
+            </div>
+        </section>
+    </div>
+</main>
+<footer class="w-full flex justify-center border-t border-solid border-gray-200/50 dark:border-white/10">
+    <div class="w-full max-w-7xl flex flex-col sm:flex-row items-center justify-between gap-4 px-6 py-6">
+        <span class="text-sm text-muted-light dark:text-muted-dark">© 2024 InterviewAI. Todos los derechos reservados.</span>
+        <div class="flex gap-6 text-sm text-muted-light dark:text-muted-dark">
+            <a class="hover:text-primary" href="#">Términos</a>
+            <a class="hover:text-primary" href="#">Privacidad</a>
+        </div>
+    </div>
+</footer>
 </div>
 
-  <!-- Header -->
-  <header>
-    <button class="menu-btn" onclick="openSidebar()">☰</button>
-    <span>¡Bienvenido, {{ user.username }}! 👋</span>
-    <button id="btn-login" class="btn-login">Iniciar Sesión</button>
-  </header>
-
-  <!-- Main -->
-  <main>
-    <div class="home-container">
-      <h2>Simaii</h2>
-      <p>Tu asistente virtual está listo para ayudarte.</p>
-      <a href="/chat/" class="btn">Ir al Chat</a>
-    </div>
-  </main>
-
-  <script>
-    function openSidebar() {
-      document.getElementById("sidebar").style.width = "250px";
-    }
-
-    function closeSidebar() {
-      document.getElementById("sidebar").style.width = "0";
-    }
-  </script>
-  <script>
-  document.getElementById("btn-home").addEventListener("click", () => {
-    window.location.href = "/";
-  });
-
-  document.getElementById("btn-chat").addEventListener("click", () => {
-    window.location.href = "/chat/";
-  });
-
-  document.getElementById("btn-contacto").addEventListener("click", () => {
-    window.location.href = "/contacto/";
-  });
-   document.getElementById("btn-login").addEventListener("click", () => {
+<script>
+document.getElementById("btn-login").addEventListener("click", () => {
     window.location.href = "/login/";
-  });
+});
+
+document.getElementById("btn-registro").addEventListener("click", () => {
+    window.location.href = "/registro/";
+});
+
+document.getElementById("btn-practica-gratis").addEventListener("click", () => {
+    window.location.href = "/personalidad/";
+});
 </script>
 </body>
 </html>

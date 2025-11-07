@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reporte de Rendimiento - Entrevista Simulada</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#10b981", // green-500
+                    "primary-light": "#d1fae5", // green-100
+                    "primary-dark": "#047857", // green-700
+                    "background-light": "#f9fafb", // gray-50
+                    "background-dark": "#111827", // gray-900
+                    "surface-dark": "#1f2937", // gray-800
+                },
+                fontFamily: {
+                    "display": ["Space Grotesk", "sans-serif"]
+                },
+                borderRadius: {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+                },
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined {
+        font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+    }
+</style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display">
+<div class="relative flex min-h-screen w-full">
+<aside class="flex-shrink-0 w-64 bg-background-light dark:bg-background-dark border-r border-gray-200 dark:border-gray-800">
+<div class="flex h-full flex-col justify-between p-4">
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 items-center">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDX8GqwfTCWDVBK023cK6kygiekfn40XjrsM5Y09e0ZXyUaRdL84RellnAKX33Q3uNFMz4uIXKi1YvZ3d49FwGO4xSzf2yE8QlLCWuQuV88KXQiuQOpp1mMfCRmuPSzQD_SP05eFeXTszVMi91oiNpcKGhV1ySFTwfoTyeJtIf0ImS1sjGH-fy7eYJ7A--6Xi2sqDRGoRHQS89bunVrhjeImLPnjjX4ml0mCe5ApydBS3oBKrMXLSA4whECivQ7_4BrbwXlpOuNpmwT");'></div>
+<div class="flex flex-col">
+<h1 class="text-gray-900 dark:text-white text-base font-medium leading-normal">{{ user.get_full_name }}</h1>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-normal leading-normal">{{ user.email }}</p>
+
+</div>
+</div>
+<nav class="flex flex-col gap-2 mt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" href="/chat">
+<span class="material-symbols-outlined text-gray-700 dark:text-gray-300">dashboard</span>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Panel Principal</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary-light dark:bg-primary/20" href="#">
+<span class="material-symbols-outlined text-primary-dark dark:text-primary">bar_chart</span>
+<p class="text-primary-dark dark:text-primary text-sm font-medium leading-normal">Reporte de Rendimiento</p>
+</a>
+
+</nav>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" href="#">
+<span class="material-symbols-outlined text-gray-700 dark:text-gray-300">help</span>
+<p class="text-gray-900 dark:text-white text-sm font-medium leading-normal">Ayuda</p>
+</a>
+<a href="/login" class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-900 dark:text-white text-sm font-medium leading-normal">
+  <span class="material-symbols-outlined text-gray-700 dark:text-gray-300">logout</span>
+  <p>Cerrar Sesión</p>
+</a>
+
+
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+<div class="flex flex-col gap-1">
+<p class="text-gray-900 dark:text-white text-3xl font-bold leading-tight tracking-tight">Reporte de Rendimiento</p>
+<p class="text-gray-500 dark:text-gray-400 text-base font-normal leading-normal">Entrevista para Product Manager - 15 de Octubre</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-gray-200 dark:bg-surface-dark text-gray-900 dark:text-white text-sm font-bold leading-normal tracking-wide hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined text-base">picture_as_pdf</span>
+<span class="truncate">Exportar a PDF</span>
+</button>
+<button class="flex min-w-[84px] cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide hover:bg-primary-dark transition-colors">
+<span class="material-symbols-outlined text-base">refresh</span>
+<span class="truncate">Practicar de Nuevo</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700">
+<p class="text-gray-700 dark:text-gray-300 text-base font-medium leading-normal">Puntuación General</p>
+<p class="text-primary-dark dark:text-primary text-3xl font-bold leading-tight">85<span class="text-gray-400 dark:text-gray-500 text-2xl">/100</span></p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700">
+<p class="text-gray-700 dark:text-gray-300 text-base font-medium leading-normal">Descripción</p>
+<p class="text-primary-dark dark:text-primary text-3xl font-bold leading-tight">Excelente Desempeño</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl p-6 bg-white dark:bg-surface-dark border border-gray-200 dark:border-gray-700">
+<p class="text-gray-700 dark:text-gray-300 text-base font-medium leading-normal">Duración</p>
+<p class="text-gray-900 dark:text-white text-3xl font-bold leading-tight">25 min</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+<div class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-700 p-6 bg-white dark:bg-surface-dark">
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-normal">Análisis de Competencias</p>
+<div class="min-h-[250px] flex items-center justify-center">
+<img class="h-64 object-contain" data-alt="Radar chart showing performance across key competencies" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZZqZU57-mwJyc6jAiQKiAXN6C7KSy1YnS7kV-vfvkD0Xqt51e6udm8fD4RQE02XSAXxkOaeuorkiHyXnvtnKi-QfU0jx9DJZ0kyn3QDHI9Y6SGx-8pnEwPVPqrASxOFUfzOzBx0ULWzHEryHPg1b1evJBJfTll-SuU0KyXbeoOrwh4y3su2RrIsfFndzqbTf2qkU2pAmE74LlGtSkILBILaOoE3h6v8RuJLoHfYA0PvEtnRKIP2BISLGDS2henXy8dei0DId5NBYI"/>
+</div>
+</div>
+<div class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-700 p-6 bg-white dark:bg-surface-dark">
+<p class="text-gray-900 dark:text-white text-lg font-bold leading-normal">Métricas de Comunicación</p>
+<div class="grid gap-x-4 gap-y-6 grid-cols-[auto_1fr] items-center py-3 flex-1">
+<p class="text-gray-500 dark:text-gray-400 text-sm font-bold leading-normal">Ritmo</p>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2"><div class="bg-primary rounded-full h-2" style="width: 85%;"></div></div>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-bold leading-normal">Muletillas</p>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2"><div class="bg-primary rounded-full h-2" style="width: 20%;"></div></div>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-bold leading-normal">Confianza</p>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2"><div class="bg-primary rounded-full h-2" style="width: 90%;"></div></div>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-bold leading-normal">Claridad</p>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2"><div class="bg-primary rounded-full h-2" style="width: 75%;"></div></div>
+<p class="text-gray-500 dark:text-gray-400 text-sm font-bold leading-normal">Respuesta</p>
+<div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2"><div class="bg-primary rounded-full h-2" style="width: 95%;"></div></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+<div class="rounded-xl border border-gray-200 dark:border-gray-700 p-6 bg-white dark:bg-surface-dark">
+<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center justify-center size-8 rounded-full bg-green-100 dark:bg-green-500/20">
+<span class="material-symbols-outlined text-green-700 dark:text-green-400">thumb_up</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Puntos Fuertes</h3>
+</div>
+<ul class="space-y-3 text-gray-700 dark:text-gray-300">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-500 dark:text-green-400 text-xl mt-0.5">check_circle</span>
+<span>Excelente uso de la metodología STAR para estructurar respuestas a preguntas de comportamiento.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-500 dark:text-green-400 text-xl mt-0.5">check_circle</span>
+<span>Demostración clara de habilidades de liderazgo al describir el proyecto X.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-green-500 dark:text-green-400 text-xl mt-0.5">check_circle</span>
+<span>Tono de voz confiado y ritmo de habla adecuado durante toda la entrevista.</span>
+</li>
+</ul>
+</div>
+<div class="rounded-xl border border-gray-200 dark:border-gray-700 p-6 bg-white dark:bg-surface-dark">
+<div class="flex items-center gap-3 mb-4">
+<div class="flex items-center justify-center size-8 rounded-full bg-orange-100 dark:bg-orange-500/20">
+<span class="material-symbols-outlined text-orange-700 dark:text-orange-400">lightbulb</span>
+</div>
+<h3 class="text-lg font-bold text-gray-900 dark:text-white">Áreas de Mejora</h3>
+</div>
+<ul class="space-y-3 text-gray-700 dark:text-gray-300">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 dark:text-orange-400 text-xl mt-0.5">trending_up</span>
+<span>Intenta cuantificar tus logros con métricas específicas para un mayor impacto.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 dark:text-orange-400 text-xl mt-0.5">trending_up</span>
+<span>Al responder sobre tus debilidades, enfócate más en los pasos que estás tomando para mejorar.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-orange-500 dark:text-orange-400 text-xl mt-0.5">trending_up</span>
+<span>Se detectó el uso recurrente de la muletilla "eh..." entre frases. Prueba a hacer pausas cortas en su lugar.</span>
+</li>
+</ul>
+</div>
+</div>
+<h2 class="text-gray-900 dark:text-white text-2xl font-bold leading-tight tracking-tight mt-10 mb-4">Análisis por Pregunta</h2>
+<div class="space-y-4">
+<div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark overflow-hidden">
+<details class="group">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-gray-800 dark:text-gray-200 font-medium">1. Háblame de ti.</span>
+<span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 border-t border-gray-200 dark:border-gray-700">
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-3 mb-1 font-semibold">Tu respuesta:</p>
+<p class="text-gray-700 dark:text-gray-300 italic">"Bueno, eh... soy Juan Pérez, un Product Manager con 5 años de experiencia en el sector fintech. Me especializo en..."</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-4 mb-1 font-semibold">Feedback de la IA:</p>
+<p class="text-gray-700 dark:text-gray-300">Buen resumen inicial. Intenta evitar empezar con "Bueno, eh..." para proyectar más confianza desde el principio. Tu 'elevator pitch' podría ser más conciso y enfocado en un logro clave.</p>
+</div>
+</details>
+</div>
+<div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark overflow-hidden">
+<details class="group">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-gray-800 dark:text-gray-200 font-medium">2. Describe un momento en el que tuviste que lidiar con un stakeholder difícil.</span>
+<span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 border-t border-gray-200 dark:border-gray-700">
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-3 mb-1 font-semibold">Tu respuesta:</p>
+<p class="text-gray-700 dark:text-gray-300 italic">"En mi rol anterior, tuvimos un desacuerdo sobre las prioridades del roadmap. Escuché activamente sus preocupaciones, presenté datos para respaldar mi propuesta y..."</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-4 mb-1 font-semibold">Feedback de la IA:</p>
+<p class="text-gray-700 dark:text-gray-300">Excelente aplicación del método STAR. La descripción de la situación, tarea, acción y resultado fue clara y efectiva. Demuestra empatía y pensamiento estratégico.</p>
+</div>
+</details>
+</div>
+<div class="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-surface-dark overflow-hidden">
+<details class="group">
+<summary class="flex items-center justify-between p-4 cursor-pointer">
+<span class="text-gray-800 dark:text-gray-200 font-medium">3. ¿Cómo priorizas las tareas en un entorno de alta presión?</span>
+<span class="material-symbols-outlined transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-4 border-t border-gray-200 dark:border-gray-700">
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-3 mb-1 font-semibold">Tu respuesta:</p>
+<p class="text-gray-700 dark:text-gray-300 italic">"Uso una combinación de frameworks como RICE e ICE para evaluar el impacto, la confianza y el esfuerzo. Esto me permite tomar decisiones basadas en datos..."</p>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-4 mb-1 font-semibold">Feedback de la IA:</p>
+<p class="text-gray-700 dark:text-gray-300">Respuesta sólida y técnica. Mencionas frameworks relevantes, lo cual demuestra conocimiento. Para mejorar, podrías dar un ejemplo concreto de cómo aplicaste este método en un proyecto real.</p>
+</div>
+</details>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+</body></html>
